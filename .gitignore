@@ -1,0 +1,7 @@
+.idea
+.env
+/vendor
+/data/cache
+/data/editor
+/data/file
+/data/session
