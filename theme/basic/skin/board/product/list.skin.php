@@ -112,10 +112,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                             if ($list[$i]['is_notice']) { // 공지사항  ?>
                                 <span class="is_notice">공지</span>
                             <?php } else {
-                                $thumb = get_list_thumbnail($board['bo_table'], $list[$i]['wr_id'], $board['bo_gallery_width'], $board['bo_gallery_height'], false, true);
-
-                                if($thumb['src']) {
-                                    $img_content = '<img src="'.$thumb['src'].'" alt="'.$thumb['alt'].'" >';
+//                                $thumb = get_list_thumbnail($board['bo_table'], $list[$i]['wr_id'], $board['bo_gallery_width'], $board['bo_gallery_height'], false, true);
+                                if($list[$i]['wr_5']) {
+                                    $img_content = '<img src="'.$list[$i]['wr_5'].'" alt="'.$list[$i]['alt'].'" >';
                                 } else {
                                     $img_content = '<span class="no_image">no image</span>';
                                 }

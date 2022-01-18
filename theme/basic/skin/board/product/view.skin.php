@@ -1,4 +1,5 @@
 <?php
+
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 
@@ -97,27 +98,24 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
         <?php
         // 파일 출력
-        $v_img_count = count($view['file']);
-        if($v_img_count) {
-            echo "<div id=\"bo_v_img\">\n";
-
-            for ($i=0; $i<=count($view['file']); $i++) {
-                echo get_file_thumbnail($view['file'][$i]);
-            }
-
-            echo "</div>\n";
-        }
+//        $v_img_count = count($view['file']);
+//        if($v_img_count) {
+//            echo "<div id=\"bo_v_img\">\n";
+//
+//            for ($i=0; $i<=count($view['file']); $i++) {
+//                echo get_file_thumbnail($view['file'][$i]);
+//            }
+//
+//            echo "</div>\n";
+//        }
          ?>
         <!-- 본문 내용 시작 { -->
         <div id="bo_v_con">
-            <?php echo get_view_thumbnail($view['content']); ?>
-            <div class="content-notice">
-                * 본 게시글은 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받고 있습니다.<br>
-                * 최종게시일(<?php echo date("Y.m.d H:i", strtotime($view['wr_datetime'])) ?>) 기준으로 상품 및 기타 내용이 변동될 수 있습니다.
-            </div>
-            <div class="text-center">
-                <a href="<?php echo $view['wr_link1']?>" target="_blank" rel="noopener noreferrer" class="product-link"><?php echo $view['wr_subject']?> 자세히 보러가기</a>
-            </div>
+<!--            --><?php //echo get_view_thumbnail($view['content']); ?>
+<!--            <div class="text-center">-->
+<!--                <a href="--><?php //echo $view['wr_link1']?><!--" target="_blank" rel="noopener noreferrer" class="product-link">--><?php //echo $view['wr_subject']?><!-- 자세히 보러가기</a>-->
+<!--            </div>-->
+            <?php include $board_skin_path.'/content.skin.php'?>
         </div>
         
 

@@ -1,6 +1,7 @@
 <?php
 include 'common.php';
-use CCPP\CoupangAPI;
+
+use CCPP\Coupang\CoupangAPI;
 use Illuminate\Container\Container;
 
 if($_GET['keyword']){

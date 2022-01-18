@@ -1,8 +1,9 @@
 <?php
 include "./_common.php";
 
-use CCPP\CoupangAPI;
+use CCPP\Coupang\CoupangAPI;
 use Illuminate\Container\Container;
+
 $sub_menu = "400100";
 auth_check($auth[$sub_menu], 'r');
 include_once('../admin.head.php');

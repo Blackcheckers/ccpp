@@ -1,6 +1,6 @@
 <?php
-namespace CCPP;
-use \GuzzleHttp\Client;
+namespace CCPP\Coupang;
+use GuzzleHttp\Client;
 
 class CoupangAPI{
     public $client;
