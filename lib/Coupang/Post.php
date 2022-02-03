@@ -61,72 +61,50 @@ class Post
         // sql_query("ALTER TABLE {$this->boTable} AUTO_INCREMENT = 0");
 
         foreach ($object as $key => $value) {
+
             $cname = str_replace('(', '', $value->categoryName);
             $ca_name = str_replace(')', '', $cname);
-            $wr_num = '';
-            $wr_reply = "";
-            // $ca_name = $cname;
-            $html = "";
-            $secret = "";
-            $mail = "";
-            $wr_subject = $value->productName;
-            $wr_content = $value->productName;
-            $wr_seo_title = str_replace(' ', '-', $value->productName);
-            $wr_link1 = $value->productUrl;
-            $wr_link2 = "";
-            $wr_password = "";
-            $wr_name = "";
-            $wr_email = "";
-            $wr_homepage = "";
-            $wr_1 = $value->productId;
-            $wr_2 = $value->productPrice;
-            $wr_3 = $value->isRokect;
-            $wr_4 = $value->isFreeShipping;
-            $wr_5 = $value->productImage;
-            $wr_6 = $value->rank;
-            $wr_7 = "";
-            $wr_8 = "";
-            $wr_9 = "";
-            $wr_10 = "";
+            $request = [
+                'bo_table'     => $this->boTable,
+                'wr_num'       => "",
+                'wr_reply'     => "",
+                'wr_comment'   => 0,
+                'ca_name'      => $ca_name,
+                'wr_option'    => "",
+                'wr_subject'   => $value->productName,
+                'wr_content'   => $value->productName,
+                'wr_seo_title' => str_replace(' ', '-', $value->productName),
+                'wr_link1'     => $value->productUrl,
+                'wr_link2'     => "",
+                'wr_link1_hit' => "",
+                'wr_link2_hit' => "",
+                'wr_hit'       => "",
+                'wr_good'      => "",
+                'wr_nogood'    => "",
+                'mb_id'        => $member['mb_id'],
+                'wr_password'  => "",
+                'wr_name'      => $member['mb_name'],
+                'wr_email'     => "",
+                'wr_homepage'  => "",
+                'wr_datetime'  => G5_TIME_YMDHIS,
+                'wr_file'      => 1,
+                'wr_last'      => G5_TIME_YMDHIS,
+                'wr_ip'        => $_SERVER['REMOTE_ADDR'],
+                'wr_1'         => $value->productId,
+                'wr_2'         => $value->productPrice,
+                'wr_3'         => $value->isRokect,
+                'wr_4'         => $value->isFreeShipping,
+                'wr_5'         => $value->productImage,
+                'wr_6'         => $value->rank,
+                'wr_7'         => "",
+                'wr_8'         => "",
+                'wr_9'         => "",
+                'wr_10'        => "",
+            ];
 
-            $sql = " insert into {$this->boTable}
-                        set wr_num = '$wr_num',
-                        wr_reply = '$wr_reply',
-                        wr_comment = 0,
-                        ca_name = '$ca_name',
-                        wr_option = '$html,$secret,$mail',
-                        wr_subject = '$wr_subject',
-                        wr_content = '$wr_content',
-                        wr_seo_title = '$wr_seo_title',
-                        wr_link1 = '$wr_link1',
-                        wr_link2 = '$wr_link2',
-                        wr_link1_hit = 0,
-                        wr_link2_hit = 0,
-                        wr_hit = 0,
-                        wr_good = 0,
-                        wr_nogood = 0,
-                        mb_id = '{$member['mb_id']}',
-                        wr_password = '$wr_password',
-                        wr_name = '$wr_name',
-                        wr_email = '$wr_email',
-                        wr_homepage = '$wr_homepage',
-                        wr_datetime = '".G5_TIME_YMDHIS."',
-                        wr_file = 1,
-                        wr_last = '".G5_TIME_YMDHIS."',
-                        wr_ip = '{$_SERVER['REMOTE_ADDR']}',
-                        wr_1 = '$wr_1',
-                        wr_2 = '$wr_2',
-                        wr_3 = '$wr_3',
-                        wr_4 = '$wr_4',
-                        wr_5 = '$wr_5',
-                        wr_6 = '$wr_6',
-                        wr_7 = '$wr_7',
-                        wr_8 = '$wr_8',
-                        wr_9 = '$wr_9',
-                        wr_10 = '$wr_10' ";
-            $result = sql_query($sql);
-            if($result){
-                $wr_id = sql_insert_id();
+            $wr_id = $this->insert($request, true);
+
+            if($wr_id){
                 sql_query("UPDATE {$this->boTable} SET wr_parent = '$wr_id', wr_num = '-$wr_id' WHERE wr_id = '$wr_id'");
                 sql_query(" insert into {$g5['board_new_table']} ( bo_table, wr_id, wr_parent, bn_datetime, mb_id ) values ( '{$this->tableName}', '{$wr_id}', '{$wr_id}', '".G5_TIME_YMDHIS."', '{$member['mb_id']}' ) ");
                 $response = $this->coupangApi->downloadImage($value->productImage, $this->bbsImagePath);
@@ -207,5 +185,97 @@ class Post
                   where bo_table = '{$this->tableName}' ";
         sql_query($sql);
         delete_cache_latest($this->tableName);
+    }
+
+    public function insert($request, $insertedId=false)
+    {
+        $sql = " insert into {$request['bo_table']}
+                        set wr_num = '{$request['wr_num']}',
+                        wr_reply = '{$request['wr_reply']}',
+                        wr_comment = '{$request['wr_comment']}',
+                        ca_name = '{$request['ca_name']}',
+                        wr_option = '{$request['wr_option']}',
+                        wr_subject = '{$request['wr_subject']}',
+                        wr_content = '{$request['wr_content']}',
+                        wr_seo_title = '{$request['wr_seo_title']}',
+                        wr_link1 = '{$request['wr_link1']}',
+                        wr_link2 = '{$request['wr_link2']}',
+                        wr_link1_hit = '{$request['wr_link1_hit']}',
+                        wr_link2_hit = '{$request['wr_link2_hit']}',
+                        wr_hit = '{$request['wr_hit']}',
+                        wr_good = '{$request['wr_good']}',
+                        wr_nogood = '{$request['wr_nogood']}',
+                        mb_id = '{$request['mb_id']}',
+                        wr_password = '{$request['wr_password']}',
+                        wr_name = '{$request['wr_name']}',
+                        wr_email = '{$request['wr_email']}',
+                        wr_homepage = '{$request['wr_homepage']}',
+                        wr_datetime = '{$request['wr_datetime']}',
+                        wr_file = '{$request['wr_file']}',
+                        wr_last = '{$request['wr_last']}',
+                        wr_ip = '{$request['wr_ip']}',
+                        wr_1 = '{$request['wr_1']}',
+                        wr_2 = '{$request['wr_2']}',
+                        wr_3 = '{$request['wr_3']}',
+                        wr_4 = '{$request['wr_4']}',
+                        wr_5 = '{$request['wr_5']}',
+                        wr_6 = '{$request['wr_6']}',
+                        wr_7 = '{$request['wr_7']}',
+                        wr_8 = '{$request['wr_8']}',
+                        wr_9 = '{$request['wr_9']}',
+                        wr_10 = '{$request['wr_10']}'
+                  ";
+        $result = sql_query($sql);
+
+        if($insertedId){
+            return sql_insert_id();
+        }
+
+        return $result;
+    }
+
+    public function update($request)
+    {
+        $sql = " update {$request['bo_table']}
+                        set wr_num = '{$request['wr_num']}',
+                        wr_reply = '{$request['wr_reply']}',
+                        wr_comment = '{$request['wr_comment']}',
+                        ca_name = '{$request['ca_name']}',
+                        wr_option = '{$request['wr_option']}',
+                        wr_subject = '{$request['wr_subject']}',
+                        wr_content = '{$request['wr_content']}',
+                        wr_seo_title = '{$request['wr_seo_title']}',
+                        wr_link1 = '{$request['wr_link1']}',
+                        wr_link2 = '{$request['wr_link2']}',
+                        wr_link1_hit = '{$request['wr_link1_hit']}',
+                        wr_link2_hit = '{$request['wr_link2_hit']}',
+                        wr_hit = '{$request['wr_hit']}',
+                        wr_good = '{$request['wr_good']}',
+                        wr_nogood = '{$request['wr_nogood']}',
+                        mb_id = '{$request['mb_id']}',
+                        wr_password = '{$request['wr_password']}',
+                        wr_name = '{$request['wr_name']}',
+                        wr_email = '{$request['wr_email']}',
+                        wr_homepage = '{$request['wr_homepage']}',
+                        wr_datetime = '{$request['wr_datetime']}',
+                        wr_file = '{$request['wr_file']}',
+                        wr_last = '{$request['wr_last']}',
+                        wr_ip = '{$request['wr_ip']}',
+                        wr_1 = '{$request['wr_1']}',
+                        wr_2 = '{$request['wr_2']}',
+                        wr_3 = '{$request['wr_3']}',
+                        wr_4 = '{$request['wr_4']}',
+                        wr_5 = '{$request['wr_5']}',
+                        wr_6 = '{$request['wr_6']}',
+                        wr_7 = '{$request['wr_7']}',
+                        wr_8 = '{$request['wr_8']}',
+                        wr_9 = '{$request['wr_9']}',
+                        wr_10 = '{$request['wr_10']}'
+                  WHERE wr_id = '{$request['wr_id']}'
+                  ";
+
+        $result = sql_query($sql);
+
+        return $result;
     }
 }
