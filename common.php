@@ -1,5 +1,9 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+
+use Illuminate\Container\Container;
+$_APP = new Container;
+
 /*******************************************************************************
 ** 공통 변수, 상수, 코드
 *******************************************************************************/

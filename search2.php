@@ -2,13 +2,12 @@
 include 'common.php';
 
 use CCPP\Coupang\CoupangAPI;
-use Illuminate\Container\Container;
+
 
 if($_GET['keyword']){
     session_start();
     $keyword = $_GET['keyword'];
-    $app = new Container();
-    $coupangAPI = $app->make(CoupangAPI::class);
+    $coupangAPI = $_APP->make(CoupangAPI::class);
     $result = $coupangAPI->getSearch($keyword);
     $data = $result->data;
     $_SESSION['result'] = $result;

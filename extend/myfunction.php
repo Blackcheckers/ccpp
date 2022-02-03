@@ -102,4 +102,17 @@ function latestNew($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_ti
 
     return $content;
 }
+
+function d($dump)
+{
+    echo '<pre>';
+    var_dump($dump);
+    echo '</pre>';
+}
+
+function dd($dump)
+{
+    d($dump);
+    exit;
+}
 ?>

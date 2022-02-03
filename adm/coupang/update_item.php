@@ -2,26 +2,24 @@
 include "./_common.php";
 
 use CCPP\Coupang\CoupangAPI;
-use Illuminate\Container\Container;
+use CCPP\Coupang\Post;
 
 $sub_menu = "400100";
 auth_check($auth[$sub_menu], 'r');
 include_once('../admin.head.php');
 
-$app = new Container();
-$coupangAPI = $app->make(CoupangAPI::class);
+$coupangAPI = $_APP->make(CoupangAPI::class);
+$post = $_APP->make(Post::class);
 
 $productArr = $coupangAPI->productArr;
 
 if(isset($cp)){
-    $table    = sql_real_escape_string($cp['bo_table']);
     $resource = $cp['resource'];
     $method   = $cp['method'];
     $count    = empty($cp['count']) ? '10' : $cp['count'];
-    $coupangAPI->init($table);
     $cpItems = $coupangAPI->getBestcategories("$resource", 'GET', $count);
-    $result1 = $coupangAPI->storeItems($cpItems->data);
-    $result2 = $coupangAPI->fixCount();
+    $post->init(sql_real_escape_string($cp['bo_table']));
+    $result1 = $post->storeItems($cpItems->data);
 }
 ?>
 <form action="" method="POST">
