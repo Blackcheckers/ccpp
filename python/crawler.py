@@ -54,17 +54,17 @@ soup = BeautifulSoup(html, 'html.parser')
 contents = soup.select('.tab-contents')
 
 result = {
-    "result" : False,
-    "html" : None
+    "html" : None,
 }
 
 try :
     result['result'] = True
     result['html'] = str(contents[0])
 except :
+    result['result'] = False
     result['html'] = html
 
-print(result['html'])
+print(json.dumps(result))
 with open('webpage.html', 'w') as f:
         f.write(result['html'])
 
