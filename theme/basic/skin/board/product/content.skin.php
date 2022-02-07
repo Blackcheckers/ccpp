@@ -87,17 +87,17 @@
         <a href="<?= ($view['wr_link1']) ?>" target="_blank">연관상품 더 보기</a>
     </p>
 </div>
-<div class="content-block article">
-    <h3 class="block-title">관련링크</h3>
-    <hr>
-    <p>
-    <ul>
-        <li><a href="" target="_blank">링크1</a></li>
-        <li><a href="" target="_blank">링크1</a></li>
-        <li><a href="" target="_blank">링크1</a></li>
-    </ul>
-    </p>
-</div>
+<!--<div class="content-block article">-->
+<!--    <h3 class="block-title">관련링크</h3>-->
+<!--    <hr>-->
+<!--    <p>-->
+<!--    <ul>-->
+<!--        <li><a href="" target="_blank">링크1</a></li>-->
+<!--        <li><a href="" target="_blank">링크1</a></li>-->
+<!--        <li><a href="" target="_blank">링크1</a></li>-->
+<!--    </ul>-->
+<!--    </p>-->
+<!--</div>-->
 <div class="content-block notice text-center">
     * 본 게시글은 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받고 있습니다.<br>
     * 최종게시일(<?php echo date("Y.m.d H:i", strtotime($view['wr_datetime'])) ?>) 기준으로 상품 및 기타 내용이 변동될 수 있습니다.
