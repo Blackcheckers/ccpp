@@ -1,8 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
-
 use Illuminate\Container\Container;
-$_APP = new Container;
 
 /*******************************************************************************
 ** 공통 변수, 상수, 코드
@@ -60,6 +57,9 @@ function g5_path()
 $g5_path = g5_path();
 
 include_once($g5_path['path'].'/config.php');   // 설정 파일
+include_once $g5_path['path'].'/vendor/autoload.php';
+
+$_APP = new Container;
 
 unset($g5_path);
 

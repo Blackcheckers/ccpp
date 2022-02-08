@@ -4,13 +4,8 @@ include "./_common.php";
 use CCPP\Coupang\CoupangAPI;
 use CCPP\Coupang\Post;
 
-$sub_menu = "400100";
-auth_check($auth[$sub_menu], 'r');
-include_once('../admin.head.php');
-
 $coupangAPI = $_APP->make(CoupangAPI::class);
 $post = $_APP->make(Post::class);
-
 $productArr = $coupangAPI->productArr;
 
 if(isset($cp)){
@@ -19,8 +14,12 @@ if(isset($cp)){
     $count    = empty($cp['count']) ? '10' : $cp['count'];
     $cpItems = $coupangAPI->getBestcategories("$resource", 'GET', $count);
     $post->init(sql_real_escape_string($cp['bo_table']));
-    $result1 = $post->storeItems($cpItems->data);
+    $result = $post->storeItems($cpItems->data);
 }
+
+$sub_menu = "400100";
+auth_check($auth[$sub_menu], 'r');
+include_once('../admin.head.php');
 ?>
 <form action="" method="POST">
 <div class="btn_fixed_top">
