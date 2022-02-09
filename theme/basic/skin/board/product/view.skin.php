@@ -127,9 +127,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 <!--            <div class="text-center">-->
 <!--                <a href="--><?php //echo $view['wr_link1']?><!--" target="_blank" rel="noopener noreferrer" class="product-link">--><?php //echo $view['wr_subject']?><!-- 자세히 보러가기</a>-->
 <!--            </div>-->
-            <?php
-            include $board_skin_path.'/content.skin.php';
-            ?>
+            <?php include $board_skin_path.'/content.skin.php'; ?>
         </div>
         
 
