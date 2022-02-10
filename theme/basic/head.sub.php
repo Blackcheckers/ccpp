@@ -24,8 +24,8 @@ if(!empty($wr_id)){
     $metaDescraiption = $g5_head_title;
     $metaKeywords = $config['cf_title'].','.str_replace('|', ',', $boardData['bo_category_list']);
 } else {
-    $metaDescraiption = '쿠팡파트너스 API를 이용하여 제작한 웹사이트입니다. 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받고 있습니다.';
-    $metaKeywords = '쿠쿠팡팡, 쿠팡파트너스, 쿠팡파트너스 API';
+    $metaDescraiption = 'ubrand, 유브랜드, 쿠팡상품추천, 상품추천, 쿠팡파트너스';
+    $metaKeywords = 'ubrand, 유브랜드, 쿠팡상품추천, 상품추천, 쿠팡파트너스';
 }
 
 // 현재 접속자
