@@ -12,7 +12,7 @@ include_once(G5_THEME_PATH.'/head.php');
 
 <h2 class="sound_only">최신글</h2>
 <div class="latest_wr">
-    <?php echo latest('theme/cp_event', 'cp_event', 5, 30);?>
+    <?php echo latest('theme/cp_event', 'cp_event', 25, 30);?>
 </div>
 <div class="latest_top_wr">
     <?php   
