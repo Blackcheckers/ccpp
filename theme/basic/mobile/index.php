@@ -6,7 +6,7 @@ include_once(G5_THEME_MOBILE_PATH.'/head.php');
 
 <!-- 메인화면 최신글 시작 -->
 <?php
-echo latest('theme/cp_event', 'cp_event', 5, 30);
+//echo latest('theme/cp_event', 'cp_event', 5, 30);
 echo latest('theme/product', 'product', 12, 25);
 echo latest('theme/basic', 'sharekey', 12, 25);
 ?>

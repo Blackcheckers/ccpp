@@ -11,9 +11,9 @@ include_once(G5_THEME_PATH.'/head.php');
 ?>
 
 <h2 class="sound_only">최신글</h2>
-<div class="latest_wr">
-    <?php echo latest('theme/cp_event', 'cp_event', 5, 30);?>
-</div>
+<!--<div class="latest_wr">-->
+<!--    --><?php //echo latest('theme/cp_event', 'cp_event', 5, 30);?>
+<!--</div>-->
 <div class="latest_top_wr">
     <?php   
     // 이 함수가 바로 최신글을 추출하는 역할을 합니다.
