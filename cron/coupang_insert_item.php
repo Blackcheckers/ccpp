@@ -11,7 +11,7 @@ $cp = [
     'bo_table' => 'product',
     'resource' => '1012',
     'method' => 'GET',
-    'count' => '100',
+    'count' => '20',
 ];
 
 if(isset($cp)){
