@@ -25,9 +25,10 @@ $is_show_next_prev = ($list_count > 4) ? 1 : 0;
         <ul class="item">
             <?php
             for ($i=0; $i<$list_count; $i++) {
-            $thumb = get_list_thumbnail($bo_table, $list[$i]['wr_id'], $thumb_width, $thumb_height, false, true);
-            $img = $thumb['src'] ? $thumb['src'] : '';
-            $img_content = $img ? '<img src="'.$img.'" alt="'.$thumb['alt'].'" >' : '';
+//            $thumb = get_list_thumbnail($bo_table, $list[$i]['wr_id'], $thumb_width, $thumb_height, false, true);
+//            $img = $thumb['src'] ? $thumb['src'] : '';
+//            $img_content = $img ? '<img src="'.$img.'" alt="'.$thumb['alt'].'" >' : '';
+            $img_content = '<img src="'.$list[$i]['wr_5'].'" alt="'.$list[$i]['subject'].'" >';
             
             $echo_ul = ( $i && (($i % $divisor_count) === 0) ) ? '</ul><ul class="item">'.PHP_EOL : '';
 
