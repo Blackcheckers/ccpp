@@ -106,7 +106,7 @@ class Post
 
             if($wr_id){
                 $storeResult = null;
-//                sql_query("UPDATE {$this->boTable} SET wr_parent = '$wr_id', wr_num = '-$wr_id' WHERE wr_id = '$wr_id'");
+                sql_query("UPDATE {$this->boTable} SET wr_parent = '$wr_id', wr_num = '-$wr_id' WHERE wr_id = '$wr_id'");
 //                sql_query(" insert into {$g5['board_new_table']} ( bo_table, wr_id, wr_parent, bn_datetime, mb_id ) values ( '{$this->tableName}', '{$wr_id}', '{$wr_id}', '".G5_TIME_YMDHIS."', '{$member['mb_id']}' ) ");
 //                $response = $this->coupangApi->downloadImage($value->productImage, $this->bbsImagePath);
 //                $body = $response->getBody();
