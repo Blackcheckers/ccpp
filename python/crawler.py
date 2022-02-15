@@ -22,6 +22,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument("disable-gpu")
 options.add_argument("--incognito")
+options.add_argument("--disable-popup-blocking")
 options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 
