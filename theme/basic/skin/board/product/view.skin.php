@@ -1,19 +1,13 @@
 <?php
 use CCPP\Coupang\Post;
 use CCPP\Coupang\Crawler;
-use Symfony\Component\DomCrawler\Crawler as cw;
+use CCPP\Coupang\Template;
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 
-//$crawler = $_APP->make(Crawler::class);
-//$post = $_APP->make(post::class);
-//$url = $view['wr_link1'];
-//$url = 'https://link.coupang.com/re/AFFSDP?lptag=AF0184469&pageKey=172073083&itemId=491955480&vendorItemId=4246128952&traceid=V0-113-448c4b0e26f94ae4';
-//$view['bo_table'] = $g5['write_prefix'].$bo_table;
-//$tabContents = $crawler->getPageSource($url)->filter("ul.tab-contents")->first();
-//$imgData = $tabContents->filter('li.product-detail img')->each(function(cw $node, $i){
-//    return $node->attr('src');
-//});
+$template = $_APP->make(Template::class);
+$template->setHtml($view['wr_10']);
+$templateData = $template->getContents();
 
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0);

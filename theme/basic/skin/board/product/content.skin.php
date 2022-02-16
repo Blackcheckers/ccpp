@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://www.coupang.com/resources/20220215104055/np/css/productReview.ko_KR.css">
 <style>
     .content-block{
         text-align: left;
@@ -27,6 +28,67 @@
     .imagebox{
         margin-bottom: 20px;
     }
+
+    .content-block ul{
+        padding: 0 !important;
+    }
+
+    .content-block li{
+        list-style: none;
+    }
+
+    .content-block .sdp-review__average__gallery__list li{
+        display: inline-block !important;
+        list-style: none !important;
+    }
+
+    .content-block .product-review img{
+        max-width: none !important;
+    }
+
+    .sdp-review__highlight__positive,
+    .sdp-review__highlight__critical{
+        width: 50%;
+        margin-right: 0 !important;
+        padding-right: 50px !important;
+        padding-top: 50px;
+    }
+
+    .sdp-review__average__summary__section{
+        width: 50%;
+        margin-right: 0 !important;
+        padding-right: 30px;
+        margin-top: 20px;
+        float: left;
+    }
+
+    .sdp-review__article__list{
+        padding-bottom: 30px;
+    }
+
+    .sdp-review__article__order,
+    .sdp-review__average__gallery,
+    .sdp-review__article__page,
+    .sdp-review__article__list__help,
+    .sdp-review__highlight__positive__helpful,
+    .sdp-review__highlight__critical__helpful{
+        display: none !important;
+    }
+
+    .essentialinfo table{
+        width: 100%;
+        font-size: 14px;
+        border-collapse: collapse;
+    }
+
+    .essentialinfo table td,
+    .essentialinfo table th{
+        border: 1px solid #ccc;
+        padding: 5px;
+        padding: 5px 10px;
+        word-break: keep-all;
+    }
+
 </style>
 
 <div class="content-block image">
@@ -64,28 +126,26 @@
         <a href="<?= ($view['wr_link1']) ?>" target="_blank">배송비, 로켓배송보기</a>
     </p>
 </div>
-<div class="content-block detail">
-    <h3 class="block-title">상품 상세정보</h3>
-    <hr>
-    <p>
-        추가적인 상품정보, 상품사진 및 구매후기는 아래 상품정보 상세보기에서 확인 가능합니다.<br>
-        <a href="<?= ($view['wr_link1']) ?>" target="_blank">상품정보 상세보기</a>
-    </p>
-</div>
+<!--<div class="content-block detail">-->
+<!--    <h3 class="block-title">상품 상세정보</h3>-->
+<!--    <hr>-->
+<!--    <p>-->
+<!--        추가적인 상품정보, 상품사진 및 구매후기는 아래 상품정보 상세보기에서 확인 가능합니다.<br>-->
+<!--        <a href="--><?//= ($view['wr_link1']) ?><!--" target="_blank">상품정보 상세보기</a>-->
+<!--    </p>-->
+
+<!--</div>-->
 <div class="content-block review">
-    <h3 class="block-title">구매후기</h3>
-    <hr>
-    <p>
-        추가적인 상품정보, 상품사진 및 구매후기는 아래 상품정보 상세보기에서 확인 가능합니다.<br>
-        <a href="<?= ($view['wr_link1']) ?>" target="_blank">구매후기 더 보기</a>
-    </p>
+<!--    <h3 class="block-title">구매후기</h3>-->
+<!--    <hr>-->
+<!--    <p>-->
+<!--        추가적인 상품정보, 상품사진 및 구매후기는 아래 상품정보 상세보기에서 확인 가능합니다.<br>-->
+<!--        <a href="--><?//= ($view['wr_link1']) ?><!--" target="_blank">구매후기 더 보기</a>-->
+<!--    </p>-->
+    <?= $templateData['review']; ?>
 </div>
-<div class="content-block related">
-    <h3 class="block-title">연관상품</h3>
-    <hr>
-    <p>
-        <a href="<?= ($view['wr_link1']) ?>" target="_blank">연관상품 더 보기</a>
-    </p>
+<div class="content-block essentialinfo">
+    <?= $templateData['essentialInfo']); ?>
 </div>
 <!--<div class="content-block article">-->
 <!--    <h3 class="block-title">관련링크</h3>-->
