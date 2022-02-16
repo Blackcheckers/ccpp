@@ -145,7 +145,7 @@
     <?= $templateData['review']; ?>
 </div>
 <div class="content-block essentialinfo">
-    <?= $templateData['essentialInfo']); ?>
+    <?= $templateData['essentialInfo']; ?>
 </div>
 <!--<div class="content-block article">-->
 <!--    <h3 class="block-title">관련링크</h3>-->
